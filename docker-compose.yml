@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  # Frontend Client
+  frontend-client:
+    container_name: frontend-client
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./:/usr/src/frontend-client
+      - ./usr/src/frontend-client/node_modules
+    ports:
+      - '4200:4200'
+    environment:
+      - NODE_ENV=development
