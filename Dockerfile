@@ -1,5 +1,5 @@
 # Base image
-FROM node:10.6.3
+FROM node:10.17
 
 # Set working directory
 RUN mkdir -p /usr/src/server

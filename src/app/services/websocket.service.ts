@@ -1,25 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
+import {Injectable} from '@angular/core';
+import {Socket} from 'ngx-socket-io';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class WebsocketService {
-  public socketStatus = false;
+    public socketStatus = false;
 
-  constructor(private socket: Socket) {
-    this.checkStatus();
-  }
+    constructor(private socket: Socket) {
+        this.checkStatus();
+    }
 
-  public checkStatus(): void {
-    this.socket.on('connect', () => {
-      console.log('Conectando al servior');
-      this.socketStatus = true;
-    });
+    public checkStatus(): void {
+        this.socket.on('connect', () => {
+            console.log('Connecting to the server');
+            this.socketStatus = true;
+        });
 
-    this.socket.on('disconnect', () => {
-      console.log('Desconectado del servidor');
-      this.socketStatus = false;
-    });
-  }
+        this.socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+            this.socketStatus = false;
+        });
+    }
+
+    public emit(event: string, payload: any, callback?: () => void): void {
+        this.socket.emit(event, payload, callback);
+    }
 }
