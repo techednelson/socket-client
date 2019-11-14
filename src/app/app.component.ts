@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
     }
     
     public ngOnInit(): void {
-        this.chatService.sendMessage('Hello from Angular!');
+        this.chatService.sendMessageToServer('Hello from Angular!');
     }
 }

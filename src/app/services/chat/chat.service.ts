@@ -9,7 +9,7 @@ export class ChatService {
     constructor(private websocketService: WebsocketService) {
     }
 
-    public sendMessage(message: string): void {
+    public sendMessageToServer(message: string): void {
         const payload = {
             from: 'Nelson',
             message
